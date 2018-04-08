@@ -1,9 +1,7 @@
-FROM python:2
+FROM tiangolo/uwsgi-nginx-flask:python3.6
 
 RUN git clone https://github.com/deuterium/ow-server.git /code
-WORKDIR /code
+RUN cp -r /code/* /app
+
+WORKDIR /app
 RUN pip install -r requirements.txt
-
-
-EXPOSE 5000
-CMD ["python", "hello.py"]
